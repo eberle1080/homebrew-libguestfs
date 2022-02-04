@@ -5,10 +5,10 @@ class OsxfuseRequirement < Requirement
 
   satisfy(build_env: false) { self.class.binary_osxfuse_installed? }
 
-  def self.binary_osxfuse_installed?
-    File.exist?("/usr/local/include/osxfuse/fuse/fuse.h") &&
-      !File.symlink?("/usr/local/include/osxfuse/fuse")
-  end
+  #def self.binary_osxfuse_installed?
+  #  File.exist?("/usr/local/include/osxfuse/fuse/fuse.h") &&
+  #    !File.symlink?("/usr/local/include/osxfuse/fuse")
+  #end
 
   env do
     unless HOMEBREW_PREFIX.to_s == "/usr/local"
