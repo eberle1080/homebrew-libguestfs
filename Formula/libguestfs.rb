@@ -99,6 +99,7 @@ class Libguestfs < Formula
       "--disable-golang",
       "--disable-python",
       "--disable-ruby",
+      "--disable-daemon",
     ]
 
     system "./configure", "--disable-dependency-tracking",
