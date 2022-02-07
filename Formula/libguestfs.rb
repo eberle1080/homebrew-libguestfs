@@ -69,6 +69,10 @@ class Libguestfs < Formula
     url "https://gist.githubusercontent.com/eberle1080/926664db3d15d2060eab3ae6faaa9b07/raw/dd91de60dab943626f80b1e33ef4b40a580c0b16/backing.patch"
   end
 
+  patch do
+    url "https://gist.githubusercontent.com/eberle1080/0b79b77c1813364194a750d72462ca4a/raw/efd07536f25ae29ce68459d0d6f0375341e0e09a/nofail.patch"
+  end
+
   def install
     ENV["LIBTINFO_CFLAGS"] = "-I#{Formula["ncurses"].opt_include}"
     ENV["LIBTINFO_LIBS"] = "-lncurses"
