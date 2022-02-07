@@ -6,8 +6,8 @@ class OsxfuseRequirement < Requirement
   satisfy(build_env: false) { self.class.binary_osxfuse_installed? }
 
   def self.binary_osxfuse_installed?
-    File.exist?("/usr/local/include/osxfuse/fuse/fuse.h") &&
-      !File.symlink?("/usr/local/include/osxfuse/fuse")
+    File.exist?("/usr/local/include/fuse/fuse.h") &&
+      !File.symlink?("/usr/local/include/fuse")
   end
 
   env do
@@ -22,23 +22,15 @@ class OsxfuseRequirement < Requirement
   end
 end
 
-class LibguestfsAT132 < Formula
+class Libguestfs < Formula
   desc "Set of tools for accessing and modifying virtual machine (VM) disk images"
   homepage "https://libguestfs.org/"
-  url "https://libguestfs.org/download/1.32-stable/libguestfs-1.32.6.tar.gz"
-  sha256 "bbf4e2d63a9d5968769abfe5c0b38b9e4b021b301ca0359f92dbb2838ad85321"
-  revision 1
-
-  bottle do
-    root_url "https://github.com/Amar1729/homebrew-libguestfs/releases/download/libguestfs@1.32-1.32.6_1"
-    sha256 catalina: "962dcf74820362072d65e0e26ba217bd46c7f85a72a77fa3954d92bda602b2f7"
-  end
 
   depends_on "amar1729/libguestfs/automake-1.15" => :build
   depends_on "autoconf" => :build
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
-  depends_on "truncate" => :build
+  depends_on "coreutils" => :build
   depends_on "augeas"
   depends_on "cdrtools"
   depends_on "gettext"
@@ -72,12 +64,16 @@ class LibguestfsAT132 < Formula
     sha256 "b88e85895494d29e3a0f56ef23a90673660b61cc6fdf64ae7e5fecf79546fdd0"
   end
 
+  patch do
+    url "https://gist.githubusercontent.com/eberle1080/926664db3d15d2060eab3ae6faaa9b07/raw/dd91de60dab943626f80b1e33ef4b40a580c0b16/backing.patch"
+  end
+
   def install
     ENV["LIBTINFO_CFLAGS"] = "-I#{Formula["ncurses"].opt_include}"
     ENV["LIBTINFO_LIBS"] = "-lncurses"
 
-    ENV["FUSE_CFLAGS"] = "-D_FILE_OFFSET_BITS=64 -D_DARWIN_USE_64_BIT_INODE -I/usr/local/include/osxfuse/fuse"
-    ENV["FUSE_LIBS"] = "-losxfuse -pthread -liconv"
+    ENV["FUSE_CFLAGS"] = "-D_FILE_OFFSET_BITS=64 -D_DARWIN_USE_64_BIT_INODE -I/usr/local/include/osxfuse/fuse -I/usr/local/include/fuse"
+    ENV["FUSE_LIBS"] = "-lfuse -pthread -liconv"
 
     ENV["AUGEAS_CFLAGS"] = "-I#{Formula["augeas"].opt_include}"
     ENV["AUGEAS_LIBS"] = "-L#{Formula["augeas"].opt_lib}"
@@ -95,6 +91,9 @@ class LibguestfsAT132 < Formula
       "--disable-golang",
       "--disable-python",
       "--disable-ruby",
+      "--disable-daemon",
+      "--disable-appliance",
+      "--disable-gnulib-tests",
     ]
 
     system "./configure", "--disable-dependency-tracking",
