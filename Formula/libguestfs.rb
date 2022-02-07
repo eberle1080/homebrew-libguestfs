@@ -72,8 +72,7 @@ class Libguestfs < Formula
   end
 
   patch do
-    url "https://gist.githubusercontent.com/eberle1080/aff61c7e2f305bd831a9a1022fcc32b9/raw/31b706bd51c972102723d90d6431c11e481889c9/backing.patch"
-    sha256 "efdd93170891a15ddb7972a0ef33c3e845fcb8ddd9400bf257a67c6be81bbd64"
+    url "https://gist.githubusercontent.com/eberle1080/6069054eb3ca1323c1ce9d90a3ad6f80/raw/194670019a4a4fbf3fc85871e4a42f380bd5da0e/backing.patch"
   end
 
   def install
