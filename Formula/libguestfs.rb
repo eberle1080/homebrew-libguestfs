@@ -87,7 +87,6 @@ class Libguestfs < Formula
 
     args = [
       "--disable-probes",
-      "--disable-ocaml",
       "--disable-lua",
       "--disable-haskell",
       "--disable-erlang",
