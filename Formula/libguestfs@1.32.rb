@@ -22,7 +22,7 @@ class OsxfuseRequirement < Requirement
   end
 end
 
-class Libguestfs < Formula
+class LibguestfsAT132 < Formula
   desc "Set of tools for accessing and modifying virtual machine (VM) disk images"
   homepage "https://libguestfs.org/"
   url "https://libguestfs.org/download/1.32-stable/libguestfs-1.32.6.tar.gz"
