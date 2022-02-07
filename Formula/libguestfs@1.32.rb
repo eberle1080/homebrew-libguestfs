@@ -99,6 +99,8 @@ class LibguestfsAT132 < Formula
       "--disable-gnulib-tests",
     ]
 
+    system "autoreconf", "-i"
+
     system "./configure", "--disable-dependency-tracking",
            "--disable-silent-rules",
            "--prefix=#{prefix}",
