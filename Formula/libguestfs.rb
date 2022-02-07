@@ -92,8 +92,6 @@ class Libguestfs < Formula
       "--disable-golang",
       "--disable-python",
       "--disable-ruby",
-      "--disable-daemon",
-      "--disable-appliance",
       "--disable-gnulib-tests",
     ]
 
