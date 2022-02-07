@@ -70,7 +70,7 @@ class LibguestfsAT132 < Formula
   end
 
   patch do
-    url "https://gist.githubusercontent.com/eberle1080/0b79b77c1813364194a750d72462ca4a/raw/efd07536f25ae29ce68459d0d6f0375341e0e09a/nofail.patch"
+    url "https://gist.githubusercontent.com/eberle1080/3e80549cb6d50f6f96e259fc61878e4b/raw/f3dd121604eb5983fa4d9848f52df23db09158d3/gistfile1.txt"
   end
 
   def install
