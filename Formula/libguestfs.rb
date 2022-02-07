@@ -71,6 +71,11 @@ class Libguestfs < Formula
     sha256 "b88e85895494d29e3a0f56ef23a90673660b61cc6fdf64ae7e5fecf79546fdd0"
   end
 
+  patch do
+    url "https://gist.githubusercontent.com/eberle1080/aff61c7e2f305bd831a9a1022fcc32b9/raw/31b706bd51c972102723d90d6431c11e481889c9/backing.patch"
+    sha256 "efdd93170891a15ddb7972a0ef33c3e845fcb8ddd9400bf257a67c6be81bbd64"
+  end
+
   def install
     ENV["LIBTINFO_CFLAGS"] = "-I#{Formula["ncurses"].opt_include}"
     ENV["LIBTINFO_LIBS"] = "-lncurses"
