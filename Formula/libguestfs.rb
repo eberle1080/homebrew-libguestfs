@@ -25,6 +25,7 @@ end
 class Libguestfs < Formula
   desc "Set of tools for accessing and modifying virtual machine (VM) disk images"
   homepage "https://libguestfs.org/"
+  url "https://libguestfs.org/download/1.32-stable/libguestfs-1.32.6.tar.gz"
 
   depends_on "amar1729/libguestfs/automake-1.15" => :build
   depends_on "autoconf" => :build
