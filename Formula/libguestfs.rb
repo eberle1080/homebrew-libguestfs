@@ -83,6 +83,8 @@ class Libguestfs < Formula
     ENV["AUGEAS_CFLAGS"] = "-I#{Formula["augeas"].opt_include}"
     ENV["AUGEAS_LIBS"] = "-L#{Formula["augeas"].opt_lib}"
 
+    ENV["GTKDOCIZE"] = "echo"
+
     args = [
       "--disable-probes",
       "--disable-ocaml",
