@@ -102,6 +102,8 @@ class LibguestfsAT132 < Formula
       "--disable-gnulib-tests",
     ]
 
+    system "pwd"
+
     system "autoreconf", "-i"
 
     system "./configure", "--disable-dependency-tracking",
