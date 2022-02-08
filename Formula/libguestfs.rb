@@ -47,6 +47,8 @@ class Libguestfs < Formula
     depends_on OsxfuseRequirement => :build
   end
 
+  env :std
+
   # the linux support is a bit of a guess, since homebrew doesn't currently build bottles for libvirt
   # that means brew test-bot's --build-bottle will fail under ubuntu-latest runners
   on_linux do
