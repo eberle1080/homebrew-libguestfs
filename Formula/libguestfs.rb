@@ -104,6 +104,8 @@ class Libguestfs < Formula
 
     system "pwd"
 
+    system "set"
+
     system "autoreconf", "-i"
 
     system "./configure", "--disable-dependency-tracking",
